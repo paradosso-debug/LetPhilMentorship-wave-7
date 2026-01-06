@@ -22,14 +22,15 @@
     <!-- Add a <p> element -->
     <!-- id: "profileMoodDisplay" -->
     <!-- class: "mood-line" -->
-    <!-- Text should mention the current mood -->
+    <!-- Text should mention the current mood: Current mood: neutral -->
 
     <!-- STEP 5 — Add the favorite color display -->
     <!-- Add a <p> element -->
     <!-- id: "profileColorDisplay" -->
     <!-- class: "color-line" -->
-    <!-- Inside it, include a <span> -->
+    <!-- Inside it, include a <span>  -->
     <!-- span id: "colorValueText" -->
+    <!-- Text should be -  none yet -->
 
     <!-- STEP 6 — Create the form grid container -->
     <!-- Add a <div> with class "form-grid" -->
@@ -63,13 +64,64 @@
     <!-- class: "btn secondary" -->
     <!-- Text: "Reset Profile" -->
 
+    <main class="page">
+      <section class="card" id="profileCard">
+        <h1 id="profileNameDisplay">Your Name</h1>
+        <p id="profileMoodDisplay" class="mood-line">Current mood: neutral</p>
+        <p id="profileColorDisplay" class="color-line">
+          Favorite color:
+          <span id="colorValueText">none yet</span>
+        </p>
+        <div class="form-grid">
+          <div class="field">
+            <label for="nameInput">Name</label>
+            <input type="text" id="nameInput" placeholder="Type your name" />
+          </div>
+
+          <div class="field">
+            <label for="colorInput">Favorite Color</label>
+            <input
+              id="colorInput"
+              type="text"
+              placeholder="example: blue, yellow etc."
+            />
+          </div>
+
+          <div class="field">
+            <label for="moodSelect"></label>
+            <select id="moodSelect">
+              <option value="neutral">Neutral</option>
+              <option value="happy">Happy</option>
+              <option value="focused">Focused</option>
+              <option value="tired">Tired</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="button-row">
+          <button id="resetProfileBtn" class="btn secondary">
+            Reset Profile
+          </button>
+        </div>
+
+        <p class="hint">
+          Open <code>homework.js </code>and follow each STEP. As you type and
+          change the fields, the profile card should update live.
+        </p>
+      </section>
+    </main>
+
     <!-- STEP 12 — Add a hint paragraph -->
     <!-- Add a <p> element -->
     <!-- class: "hint" -->
     <!-- Mention homework.js and live updates -->
+    <!-- Text: Open homework.js and follow each STEP. As you type and
+          change the fields, the profile card should update live. -->
 
     <!-- STEP 13 — Link JavaScript -->
     <!-- Add a <script> tag at the bottom of the body -->
     <!-- src="homework.js" -->
+
+    <script src="script.js"></script>
   </body>
 </html>
