@@ -16,6 +16,13 @@
 //         - loadNameBtn (id "loadNameBtn")
 //         - clearNameBtn (id "clearNameBtn")
 //         - savedNameDisplay (id "savedNameDisplay")
+
+const nameInput = document.getElementById("nameInput");
+const saveNamebtn = document.getElementById("saveNameBtn");
+const loadNameBtn = document.getElementById("loadNameBtn");
+const clearNameBtn = document.getElementById("clearNameBtn");
+const savedNameDisplay = document.getElementById("savedNameDisplay");
+
 //
 // STEP 2: Add a "click" event listener to saveNameBtn.
 //         Inside the listener:
@@ -24,6 +31,18 @@
 //         - Update savedNameDisplay.textContent so it shows the saved value.
 //         - (Optional) If the input is empty, you can decide not to save
 //           or show a message like "none yet".
+
+saveNamebtn.addEventListener("click", function(){
+
+    const nameValue = nameInput.value.trim();
+    if(nameValue === ""){
+        savedNameDisplay.textContent = "None yet";
+        localStorage.removeItem("savedName");
+    }
+    localStorage.setItem("savedName",nameValue);
+    savedNameDisplay.textContent = nameValue;
+    
+} );
 //
 // STEP 3: Add a "click" event listener to loadNameBtn.
 //         Inside the listener:
