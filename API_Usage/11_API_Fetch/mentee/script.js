@@ -52,12 +52,12 @@ const spaceText = document.getElementById("activityText");
 
 adviceBtn.addEventListener("click", () => {
   adviceText.textContent = "Loading advice...";
-  let data = fetch("https://api.adviceslip.com/advice")
+  let data = fetch("https://api.adviceslip.com/advise")
     .then((response) => {
       return response.json();
     })
-    .then((response) => {
-      let newAdviceText = response.slip.advice;
+    .then((data) => {
+      let newAdviceText = data.advice;
       adviceText.textContent = newAdviceText;
     })
     .catch(function (error) {
@@ -87,6 +87,23 @@ adviceBtn.addEventListener("click", () => {
 //           In the catch:
 //              * Log the error.
 //              * Show a friendly error message in the UI.
+
+catFactBtn.addEventListener("click", () => {
+  catFactText.textContent = "Loading cat fact...";
+
+  fetch("https://catfact.ninja/fact")
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      let newCatFactText = data.fact;
+      catFactText.textContent = newCatFactText;
+    })
+    .catch(function (error) {
+      console.log(error);
+      catFactText.textContent = "Could not load cat fact. Try again.";
+    });
+});
 
 // ==============================================
 // TASK 3 – RANDOM SPACE PHOTO (NASA APOD)
