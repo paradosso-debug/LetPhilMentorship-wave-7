@@ -92,6 +92,19 @@ adviceBtn.addEventListener("click", async function () {
 //             * Log the error.
 //             * Set catFactText.textContent to "Could not load cat fact. Try again.".
 
+catFactBtn.addEventListener("click", async () => {
+  catFactText.textContent = "Loading cat fact...";
+  try {
+    const response = await axios.get("https://catfact.ninja/fact");
+    //console.log(response);
+    const factString = response.data.fact;
+    catFactText.textContent = factString;
+  } catch (error) {
+    console.log(error);
+    catFactText.textContent = "Could not load cat fact. Try again.";
+  }
+});
+
 // ==============================================
 // TASK 3 – RANDOM SPACE PHOTO (NASA APOD)
 // ==============================================
@@ -131,3 +144,31 @@ adviceBtn.addEventListener("click", async function () {
 //             * Log the error.
 //             * Set spaceDisplay.textContent to:
 //               "Could not load space photo. Try again later."
+
+spaceBtn.addEventListener("click", async () => {
+  spaceDisplay.innerHTML = "Loading space photo... 🚀";
+  try {
+    const response = await axios.get(
+      "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&count=1",
+    );
+    const data = response.data[0];
+    console.log(data);
+    if (data.media_type === "video") {
+      spaceDisplay.innerHTML = `
+      <h3> ${data.title} </h3>
+      <p style="margin-top:0.6rem;"> ${data.explanation} </p>
+      <a href = ${data.url} target="_blank" style="color:#a7f3d0;">Click Here</a>
+      `;
+    } else {
+      spaceDisplay.innerHTML = `
+      <h3> ${data.title} </h3>
+      <img src=${data.url} alt=${data.title} style="width:100%;border-radius:1rem;margin-top:0.6rem;"/>
+      
+      <p style="margin-top:0.6rem;"> ${data.explanation} </p>
+      `;
+    }
+  } catch (error) {
+    console.log(error);
+    spaceDisplay.textContent = "Could not load space photo. Try again later.";
+  }
+});
