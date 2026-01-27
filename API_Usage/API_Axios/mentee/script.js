@@ -26,6 +26,15 @@
 //         - spaceBtn (id "spaceBtn")
 //         - spaceDisplay (id "spaceDisplay")
 
+const adviceBtn = document.getElementById("adviceBtn");
+const adviceText = document.getElementById("adviceText");
+
+const catFactBtn = document.getElementById("catFactBtn");
+const catFactText = document.getElementById("catFactText");
+
+const spaceBtn = document.getElementById("spaceBtn");
+const spaceDisplay = document.getElementById("spaceDisplay");
+
 // ==============================================
 // TASK 1 – RANDOM ADVICE (AXIOS + ASYNC/AWAIT)
 // ==============================================
@@ -46,6 +55,21 @@
 //         - Inside catch:
 //             * Log the error to the console.
 //             * Set adviceText.textContent to "Could not load advice. Try again.".
+
+adviceBtn.addEventListener("click", async function () {
+  adviceText.textContent = "Loading advice....";
+
+  try {
+    const response = await axios.get("https://api.adviceslip.com/advice");
+
+    console.log(response.data);
+    const advice = response.data.slip.advice;
+    adviceText.textContent = advice;
+  } catch (error) {
+    console.log("Error fetching advice", error);
+    adviceText.textContent = "Could not load advice. Try again.";
+  }
+});
 
 // ==============================================
 // TASK 2 – RANDOM CAT FACT (AXIOS + ASYNC/AWAIT)
